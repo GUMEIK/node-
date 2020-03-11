@@ -42,7 +42,7 @@ async function dealTargetHtml(data){
     
     let fileName = `${years}${month}${day}`;
     let pathName = path.resolve(__dirname,'..');
-    fs.writeFile(`${pathName}/COVData/ppp.json`,dataJson,function(err){
+    fs.writeFile(`${pathName}/COVData/${fileName}.json`,dataJson,function(err){
         if(!err){
             console.log("json文件写入成功")
         }
@@ -50,8 +50,8 @@ async function dealTargetHtml(data){
 }
 // 每隔1小时执行一次
 let rules = new schedule.RecurrenceRule();
-// 每小时35分执行
-rules.minute = 35
+// 每小时45分执行
+rules.minute = 45
 console.log("开始等待执行")
 schedule.scheduleJob(rules,function(){
     console.log("程序已执行",new Date().getMinutes())
