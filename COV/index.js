@@ -25,12 +25,16 @@ app.get('/covdata', function (req, res) {
     let params = url.parse(req.url, true).query;
     if (params.date) {
         let date = params.date;
-        // 同步读取文件
-        let data = fs.readFileSync(`${pathName}/COVData/${date}.json`);
-        let dataString = data.toString();
-        res.set(head);
-        res.send(dataString)
-    }else{
+        try {
+            // 同步读取文件
+            let data = fs.readFileSync(`${pathName}/COVData/${date}.json`);
+            let dataString = data.toString();
+            res.set(head);
+            res.send(dataString)
+        } catch (e) {
+            res.send(e.toString());
+        }
+    } else {
         res.set(head);
         res.send("输入的日期格式不正确或不存在，请重新输入！")
     }

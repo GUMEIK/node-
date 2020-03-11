@@ -48,19 +48,19 @@ async function dealTargetHtml(data){
         }
     })
 }
-// // 每隔1小时执行一次
-// let rules = new schedule.RecurrenceRule();
-// // 每小时0分执行
-// rules.minute = 0
-// console.log("开始等待执行")
-// schedule.scheduleJob(rules,function(){
-//     console.log("程序已执行",new Date().getMinutes())
-//     dealTargetHtml(getTargetHtml());
-// })
+// 每隔1小时执行一次
+let rules = new schedule.RecurrenceRule();
+// 每小时30分执行
+rules.minute = 30
+console.log("开始等待执行")
+schedule.scheduleJob(rules,function(){
+    console.log("程序已执行",new Date().getMinutes())
+    dealTargetHtml(getTargetHtml());
+})
 // dealTargetHtml(getTargetHtml());
 // // 执行时的js文件所在的目录
 // console.log(__dirname)
 // // 执行时的js文件的完整路径
 // console.log(__filename)
-let temp = path.resolve(__dirname,'..');
-console.log(temp)
+// let temp = path.resolve(__dirname,'..');
+// console.log(temp)
